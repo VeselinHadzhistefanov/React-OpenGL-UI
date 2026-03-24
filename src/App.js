@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { WeddingBandSettingStyle } from './WeddingBandFeatures';
 
 function App() {
   return (
@@ -21,16 +22,18 @@ function App() {
           Learn React
         </a>
         <br></br>
-        <MyButton></MyButton>
+        <MyYesButton></MyYesButton>
+        <br></br>
+        <WeddingBandSettingStyle></WeddingBandSettingStyle> 
       </header>
     </div>
   );
 }
 
-function MyButton() {
+function MyYesButton() {
   return (
-    <button>I'm a button</button>
+    <button>I'm a accepting this wedding band as a symbol of eternal love and devotion from my partner and I vow to be infinitelly loyal and in love with my partner no matter what. I am my partner's love and my partner is my lover and protector for eternity.</button>
   );
 }
 
-export default App;
+export {App, MyYesButton};
