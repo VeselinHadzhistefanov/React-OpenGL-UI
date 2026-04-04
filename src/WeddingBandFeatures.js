@@ -1,22 +1,36 @@
 function WeddingBandFeatureSelector(props) {
-  let {title, description, options} = props
+  let { name, description, options } = props
 
-  let radioButtons = options.map(option =>
-    <label>
-      <input type="radio" name={title} value={option} />
-      {option}
-      <br></br>
-    </label>
-  );
+  let radioButtons = options.map(option => {
+    option = option.capitalizeFirstSymbol()
+    return (
+      <div key={option}>
+        <input type="radio" id={option} form={name} name={name} value={option}/>
+        <label htmlFor={option}>{option}</label>
+      </div>
+    );
+  });
 
   return (
-    <fieldset>
-      <legend>{description}</legend>
-      <p style={{ textAlign: "start" }}>
-        {radioButtons}
-      </p>
-    </fieldset>
+    <form id={name} onClick={onEvent}>
+      <fieldset form={name}>
+        <legend>{description}</legend>
+        <div style={{ textAlign: "start" }}>
+          {radioButtons}
+        </div>
+      </fieldset>
+    </form>
   );
 }
 
-export { WeddingBandFeatureSelector}
+function onEvent(event) {
+  console.log(event.target)
+  const data = new FormData(event.target.form)
+  console.log(event)
+}
+
+String.prototype.capitalizeFirstSymbol = function () {
+  return this[0].toUpperCase() + this.substring(1)
+}
+
+export { WeddingBandFeatureSelector }

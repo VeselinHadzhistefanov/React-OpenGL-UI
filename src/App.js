@@ -3,34 +3,54 @@ import './App.css';
 import { WeddingBandFeatureSelector } from './WeddingBandFeatures';
 
 function WeddingBandFeatures() {
-  // Feature variations:
-  let features = []
-  features.push({
-    title: "THE HEAD",
-    description: "How do you want your center stone to be set?",
-    options: ["Four-prong", "Six-prong", "double prong", "V-prong/chevron", "diamond tipped", "bezel set", "half-bezel", "bar-set"]
-  })
 
-  features.push({
-    title: "THE SHANK",
-    description: "How do you want the band around your stone finger to look?",
-    options: ["traditional", "euro-style", "cathedral", "straight", "tapered", "reverse tapered", "split", "bypass", "criss-cross"]
-  })
+  // Radio button text content
+  let options = [
+    {
+      name: "THE HEAD",
+      description: "How do you want your center stone to be set?",
+      options: ["Four-prong", "Six-prong", "double prong", "V-prong/chevron", "diamond tipped", "bezel set", "half-bezel", "bar-set"]
+    },
+    {
+      name: "THE SHANK",
+      description: "How do you want the band around your stone finger to look?",
+      options: ["traditional", "euro-style", "cathedral", "straight", "tapered", "reverse tapered", "split", "bypass", "criss-cross"]
+    },
+    {
+      name: "EMBELLISHMENTS",
+      description: "What other design features do you want included?",
+      options: ["milgrain", "engraving", "filigree", "pierced/openwork", "rope", "surprise diamond"]
+    },
+    {
+      name: "THE ACCENT STONES",
+      description: "If you want accent stones, how do you want them set?",
+      options: ["channel", "bead & bright-cut/pinpoint", "surface prong", "shared prong", "bezel", "bar", "gypsy/flush"]
+    },
+    {
+      name: "SHAPE",
+      description: "What shape do you want your center stone to be?",
+      options: ["round", "princess", "cushion", "oval", "emrald", "pear", "marquise", "radiant", "heart", "asscher", "trillion"]
+    }
+  ]
 
-  let featureSelectors = features.map(feature =>
-    <div>
-      <WeddingBandFeatureSelector title={feature.title} description={feature.description} options={feature.options}></WeddingBandFeatureSelector>
+  let weddingBandSelectors = options.map(feature =>
+    <div key={feature.name}>
+      <WeddingBandFeatureSelector title={feature.name.toTitleCase()} description={feature.description} options={feature.options}></WeddingBandFeatureSelector>
       <br></br>
     </div>
   );
 
   return (
     <div className="WeddingBandFeatures">
-      {featureSelectors}
+      {weddingBandSelectors}
     </div>
   );
 }
 
+String.prototype.toTitleCase = function() {
+  let contents = this.toLowerCase()
+  return contents[0].toUpperCase + contents.substring(1)
+}
 
 function App() {
   return (
